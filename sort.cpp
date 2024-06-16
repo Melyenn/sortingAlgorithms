@@ -581,7 +581,7 @@ int main() {
             // print(n, a);
             cout <<  n << " ------------- \n";
             for (int k = 0; k < 12; k++) { //sorting
-                if (k != 6 && k != 11) continue;
+                // if (k != 6 && k != 11) continue;
 
                 int *a1 = new int[n];
                 copyArray(n, a, a1);
