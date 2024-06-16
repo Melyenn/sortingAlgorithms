@@ -167,7 +167,7 @@ void shellSort(int n, int *a) {
     }
 }
 
-void bubbleSort(int n, int *a) {
+void interchangeSort(int n, int *a) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (a[j] < a[i]) {
@@ -366,6 +366,19 @@ void quickSort(int n, int *a) {
 //     }
 // }
 
+void bubbleSort(int n, int *a) {
+    for (int i = 0; i < n - 1; i++) {
+        bool swaped = false;
+        for (int j = 0; j < n  - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                swap(a[j], a[j + 1]);
+                swaped = true;
+            }
+            if (swaped == false) return;
+        }
+    }
+}
+
 
 int getMax(int n, int *a) {
     int max = a[0];
@@ -469,7 +482,7 @@ void GenerateSort(int *a, int n, int dataType)
 		shellSort(n, a);
 		break;
     case 3:
-        bubbleSort(n, a);
+        interchangeSort(n, a);
         break;
     case 4:
         heapSort(n, a);
@@ -495,6 +508,9 @@ void GenerateSort(int *a, int n, int dataType)
     case 11:
         flashSort(n, a);
         break;
+    case 12:
+        interchangeSort(n, a);
+        break;
 	default:
 		printf("Error: unknown data type!\n");
 	}
@@ -514,7 +530,7 @@ void SortName(int dataType)
 		cout << "Shell Sort - ";
         break;
     case 3:
-        cout << "Bubble Sort - ";
+        cout << "interchange Sort - ";
         break;
     case 4:
         cout << "Heap Sort - ";
@@ -540,6 +556,9 @@ void SortName(int dataType)
     case 11:
         cout << "Flash Sort - ";
         break; 
+    case 12:
+        cout << "InterChange Sort- ";
+        break;
 	default:
 		printf("Error: unknown data type!\n");
 	}
@@ -580,8 +599,8 @@ int main() {
             GenerateData(a, n, i);
             // print(n, a);
             cout <<  n << " ------------- \n";
-            for (int k = 0; k < 12; k++) { //sorting
-                // if (k != 6 && k != 11) continue;
+            for (int k = 0; k < 13; k++) { //sorting
+                if (k != 6 && k != 12) continue;
 
                 int *a1 = new int[n];
                 copyArray(n, a, a1);
